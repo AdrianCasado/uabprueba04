@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-4 text-center">
+          <h1 class="text-uppercase">{{this.nombreDetalle}} <small class="fw-normal">({{this.fechaDetalle}})</small> </h1>
+          <img src="{{this.imgDetalle}}" height="300">
+          <button type="button" [routerLink]="['/heroes']" class="container mt-4 btn btn-sm btn-outline-danger">Regresar</button>
+      </div>
+      <div class="col-8 mt-5">
+          <h2>{{this.nombreDetalle}}</h2>
+          <hr>
+          <p>{{this.bioDetalle}}</p>
+          <img src="{{this.casaDetalle}}" height="300" width="300" >
+      </div>
+  </div>
+</div>
+
+<!----
+
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+            <h1 class="display-6"><b>{{this.nombreDetalle}} </b>
+                <a>({{this.fechaDetalle}})</a>
+            </h1>
+            <img src="{{this.imgDetalle}}" class="card-img-top" height="300">
+    </div>
+</div>
+
+
+
+</div>
+
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <h1 class="display-6"><b>{{this.nombreDetalle}}</b> ({{this.fechaDetalle}})</h1>   
+    <img src="{{this.imgDetalle}}" class="card-img-top">
+  
+ </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+this.id=this.route.snapshot.paramMap.get('id') esto va en el ts pero me salia error jeje
+     <div *ngClass="let heroe of heroes">
+       <div class="col">
+         <div class="card h-100">
+           <div class="card-body">
+             <img [src]='heroe.img' class="card-img-top" width="100%" height="100%">
+             <h5 class="card-title">{{heroe.nombre}}</h5>
+             <p class="card-text">{{heroe.bio}}</p> 
+             <small class="text-muted">{{heroe.aparicion}}</small>
+             <br>
+             <br>
+             <button type="button" [routerLink]="['/heroe', this.heroe.id]" class="btn btn-outline-primary">Ver más</button>
+           </div>
+         </div>
+       </div>
+     </div>  
+
+
+         for (let i=0; i<this.heroes.length; i++)
+    {
+      if(this.id = this.heroes[i].id){
+        this.nombreDetalle = this.heroes[i].nombre
+      }
+    }; esto va en el ts pero no entiendo q hace asi q lo he quitao :p
+
+
+
+          <h1 class="display-6"><b>{{this.heroes[id].nombre}}</b>     ({{this.heroes[id].fecha}})</h1> 
+
+-->

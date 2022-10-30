@@ -1,0 +1,8 @@
+.card-columns{
+
+    column-count: 3;
+}
+
+.card{
+    display: inline-block;
+}

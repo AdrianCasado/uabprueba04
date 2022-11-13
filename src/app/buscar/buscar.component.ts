@@ -1,54 +1,37 @@
-import { SlicePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-heroe',
-  templateUrl: './heroe.component.html',
-  styleUrls: ['./heroe.component.css']
+  selector: 'app-buscar',
+  templateUrl: './buscar.component.html',
+  styleUrls: ['./buscar.component.css']
 })
-export class HeroeComponent implements OnInit {
-  id:any;  
-  nombreDetall: any;
-  bioDetall:any;
-  fechaDetall:any;
-  imgDetall:any;
-  casaDetall:any;
-
-
-
-
-
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.id=this.route.snapshot.paramMap.get('id')
-
-    
-
-    for (let i=0; i<this.heroes.length; i++)
-    {
-      if(this.id == this.heroes[i].id||this.id==this.heroes[i].nombre){
-        this.nombreDetall = this.heroes[i].nombre
-        this.fechaDetall = this.heroes[i].aparicion.slice(0,4)
-        this.imgDetall=this.heroes[i].img
-        this.bioDetall=this.heroes[i].bio
-
-        {
-          if(this.heroes[i].casa=="DC"){
-              this.casaDetall="assets/img/DC.jpg"
-          }
-        else
-        {
-          this.casaDetall="assets/img/marvel.png"
-        }
-        }
-      }
-    };
-  }
-
+export class BuscarComponent implements OnInit {
+  busqueda:any;
+  heroesbuscar: any[]=[];
   
 
+  constructor(private activatedRoute: ActivatedRoute) { }
+
+  ngOnInit(): void {
+
+    this.activatedRoute.params.subscribe( params =>{
+      console.log(params['textobusqueda']);
+      this.busqueda=params['textobusqueda'];
+     });
+
+    this.busqueda.toLowerCase();
+
+    for (let heroe of this.heroes) {
+      let nombre = heroe.nombre.toLowerCase();
+      if (nombre.indexOf(this.busqueda) !== -1){
+          this.heroesbuscar.push(heroe);
+      }
+    }
+
+    console.log(this.heroesbuscar)
+
+  }
   heroes=[
     {
       id:1,
@@ -108,4 +91,5 @@ export class HeroeComponent implements OnInit {
       casa: "Marvel"
     },
   ]   
+
 }
